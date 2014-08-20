@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="logIn">
+    <%= form_for(:session, url: sessions_path) do |f| %>
+        <%= f.label "帐号" %>
+        <%= f.text_field :email %>
+
+        <%= f.label "密码" %>
+        <%= f.password_field :password %>
+
+        <%= f.submit "登录", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
+<div class="imgExhibitation">
+</div>
+<div class="chaining">
+  <ul>
+    <li><%= link_to "电子科技大学主页", "http://www.uestc.edu.cn" %></li>
+    <li><%= link_to "通信与信息工程学院主页", "http://www.scie.uestc.edu.cn" %></li>
+  </ul>
+</div>
+</div>
+<div class="footer">
+  <div class="directionForIndex">
+    <ul>
+      <li><%= link_to "管理员登录", signin_path, :class => 'directionLeft' %></li>
+      <li><%= link_to "生涯发展" , department_path, :class => 'directionRight' %></li>
+      <li><a href="">创新风采</a></li>
+      <li><%= link_to "学院动态", news_path %></li>
+      <li><%= link_to "学生工作", signin_path %></li>
+    </ul>
+  </div>
+</div>
+<span class="copyright">©by IEC工作室</span>

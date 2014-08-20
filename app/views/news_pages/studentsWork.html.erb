@@ -1,0 +1,95 @@
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+  <script type="text/javaScript">
+      $(document).ready(function(){
+          $("#clickAndFadeOut1").click(function(){
+              $("#coverImg").fadeOut(1000,function(){
+                  $("#studentsMessage").fadeIn(1000);
+              });
+          });
+      });
+      $(document).ready(function(){
+          $("#clickAndFadeOut2").click(function(){
+              if($("#coverImg").css("display")=="block"){
+                  $("#coverImg").fadeOut(1000,function(){
+                      $("#uploadFiles").fadeIn(1000);
+                  });
+              }
+              else{
+                  $("form").each().fadeOut(1000,function(){
+                      $("#uploadFiles").fadeIn(1000);
+                  });
+              }
+          });
+      });
+  </script>
+</head>
+<div class="title">
+  <div class="leftColor"></div>
+  <%= link_to image_tag("logo1.png"), root_path, :class => 'imgofTitle' %>
+  <div class="direction">
+    <ul>
+      <li><%= link_to "生涯发展" , department_path, :class => 'firstDirection' %></li>
+      <li><a href="">创新风采</a></li>
+      <li><%= link_to "学院动态", news_path %></li>
+      <li><%= link_to "学生工作", signin_path %></li>
+      <% if signed_in? %>
+          <li><%= link_to "退出登录", signout_path, method: "delete" %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="mainBody">
+    <div class="leftMenu">
+      <ul>
+        <li><a href="#studentsMessage" id="clickAndFadeOut1">我要留言</a></li>
+        <li><a href="#filesUpLoad" id="clickAndFadeOut2">文件上传</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="rightBlock">
+        <%= image_tag("cover.png", id: "coverImg") %>
+      </div>
+      <form id="studentsMessage" class="messageOut">
+        <span>辅导员选择</span>
+        <select name="instructor" >
+          <option>刘刚</option>
+          <option>匡鹏举</option>
+          <option>刘雨萌</option>
+          <option>马明达</option>
+          <option>吴霞</option>
+          <option>李波</option>
+          <option>桂阳</option>
+          <option>何翔</option>
+          <option>王萍萍</option>
+        </select>
+        <br></br>
+        <textarea class="textAreaofStudents" placeholder="input your message">
+        </textarea>
+        <br></br>
+        <button type="submit" class="buttonofStudentsWork">确认</button>
+      </form>
+      <form id="uploadFiles" class="uploadFilesOut">
+        <span>辅导员选择</span>
+        <select name="instructor" >
+          <option>刘刚</option>
+          <option>匡鹏举</option>
+          <option>刘雨萌</option>
+          <option>马明达</option>
+          <option>吴霞</option>
+          <option>李波</option>
+          <option>桂阳</option>
+          <option>何翔</option>
+          <option>王萍萍</option>
+        </select>
+        <br></br>
+        <input type="file" class="buttonofStudentsWork"></input>
+        <br></br>
+        <textarea class="textAreaofStudents" placeholder="input your message">
+        </textarea>
+        <br></br>
+        <button type="submit" class="buttonofStudentsWork">确认</button>
+      </form>
+    </div>
+    <hr class="partingLine"></hr>
+    <span class="copyright">©by IEC工作室</span>

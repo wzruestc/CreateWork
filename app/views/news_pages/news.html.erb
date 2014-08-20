@@ -1,0 +1,44 @@
+<div class="title">
+  <div class="leftColor"></div>
+  <%= link_to image_tag("logo1.png"), root_path, :class => 'imgofTitle' %>
+  <div class="direction">
+    <ul>
+      <li><%= link_to "生涯发展" , department_path, :class => 'firstDirection' %></li>
+      <li><a href="">创新风采</a></li>
+      <li><%= link_to "学院动态", news_path %></li>
+      <li><%= link_to "学生工作", signin_path %></li>
+      <% if signed_in? %>
+          <li><%= link_to "退出登录", signout_path, method: "delete" %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="buttonForEdit">
+    <% if signed_in? %>
+        <%= link_to "文章管理", edit_path, class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+  <div class="mainBody">
+    <div class="leftMenu">
+      <div class="span8">
+        <% if @user.articles.any? %>
+            <h3>文章 (<%= @user.articles.count %>)</h3>
+            <ol class="articles">
+              <%= render @articles %>
+            </ol>
+            <%= will_paginate @articles %>
+        <% end %>
+    </div>
+    <div class="rightBlock">
+      <div class="span8">
+        <% if @user.articles.any? %>
+            <h3>文章 (<%= @user.articles.count %>)</h3>
+            <ol class="articles">
+              <%= render @articles %>
+            </ol>
+            <%= will_paginate @articles %>
+        <% end %>
+    </div>
+  </div>
+</div>

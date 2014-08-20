@@ -1,0 +1,93 @@
+<style type="text/css">
+    @charset "UTF-8";
+    html{
+        height: 100%;
+    }
+    body{
+        margin: 0 0;
+        padding: 0 0;
+        height: 100%;
+        font-family: "MicrosoftYaHei","Microsoft YaHei","微软雅黑",STHeiti,SimSun,"宋体", SimHei, Arial; color: #000;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    li{
+        list-style-type: none;
+    }
+    .wrapper{
+        min-height: 100%;
+        width: 70%;
+        margin: auto;
+    }
+    .title img{
+        height: 130px;
+        margin-top: 17%;
+        margin-bottom: 15%;
+        margin-left: 0px;
+    }
+    .slogan{
+
+    }
+    .chaining{
+        position: absolute;
+        left: 12%;
+    }
+    .chaining a{
+        text-decoration: none;
+        display: inline;
+        font-size: 15px;
+        color: #C2C2C2;
+    }
+    .footer{
+        position: absolute;
+        height: 10%;
+        bottom: 0px;
+        width: 100%;
+    }
+    .directionForIndex ul{
+        width: 100%;
+        background: #42B3E5;
+        height: 30px;
+        position: absolute;
+        bottom: 3em;
+    }
+    .directionForIndex li{
+        display: inline;
+        margin-right: 40px;
+    }
+    .directionLeft{
+        margin-left: 12%;
+        margin-right: 25%;
+    }
+    .directionForIndex a{
+        color: #E6E6E6;
+    }
+</style>
+<body>
+<div class="wrapper">
+  <div class="title">
+    <%= link_to image_tag("logo1.png"), root_path %>
+  </div>
+  <div class="slogan">
+  </div>
+  <div class="chaining">
+    <ul>
+      <li><%= link_to "电子科技大学主页", "http://www.uestc.edu.cn" %></li>
+      <li><%= link_to "通信与信息工程学院主页", "http://www.scie.uestc.edu.cn" %></li>
+    </ul>
+  </div>
+</div>
+<div class="footer">
+  <div class="directionForIndex">
+    <ul>
+      <li><%= link_to "管理员登录", signin_path, :class => 'directionLeft' %></li>
+      <li><%= link_to "生涯发展" , department_path, :class => 'directionRight' %></li>
+      <li><a href="">创新风采</a></li>
+      <li><%= link_to "学院动态", news_path %></li>
+      <li><%= link_to "学生工作", signin_path %></li>
+    </ul>
+  </div>
+</div>
+<span class="copyright">©by IEC工作室</span>

@@ -1,0 +1,94 @@
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<style type="text/css" media="screen">
+  .textarea {
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear .2s, box-shadow linear .2s;
+    -moz-transition: border linear .2s, box-shadow linear .2s;
+    -o-transition: border linear .2s, box-shadow linear .2s;
+    transition: border linear .2s, box-shadow linear .2s;
+    padding: 4px 6px;
+    font-size: 14px;
+    line-height: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    vertical-align: middle;
+    outline: none;
+    height: 400px;
+  }
+  .index{
+  display: block;
+}
+</style>
+<div class="title">
+	<div class="leftColor"></div>
+    <%= link_to image_tag("logo1.png"), root_path, :class => 'imgofTitle' %>
+	<div class="direction">
+		<ul>
+          <li><%= link_to "生涯发展" , department_path, :class => 'firstDirection' %></li>
+          <li><a href="">创新风采</a></li>
+          <li><%= link_to "学院动态", news_path %></li>
+          <li><%= link_to "学生工作", signin_path %></li>
+          <% if signed_in? %>
+              <li><%= link_to "退出登录", signout_path, method: "delete" %></li>
+          <% end %>
+		</ul>
+	</div>
+</div>
+<div class="wrapper">
+    <div class="edit-blank">
+      <%= form_for(@article, :html => {:class => 'form-horizontal', :multipart => true}) do |f| %>
+      <div class="control-group">
+        <%= f.label "文章标题", class: "control-label", for:"inputEmail" %>
+        <div class="controls">
+          <%= f.text_field :title, placeholder: "请输入标题" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label "正文编辑", class: "control-label", for:"post_body" %>
+        <div class="controls">
+          <%= f.text_area :content, placeholder: "请输入正文", class: "textarea" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit "提交", class: "btn btn-success", id: "submit" %>
+          <button class="btn" onclick="return changeInsertImageIconWithCustomEvent();">插图</button>
+
+        </div>
+      </div>
+          <% end %>
+     <script type="text/javascript">
+    $("#article_content").qeditor({});
+    
+    // Custom a toolbar icon
+    var toolbar = $("#article_content").parent().find(".qeditor_toolbar");
+    var link = $("<a href='#'><span class='icon-smile' title='smile'></span></a>");
+    link.click(function(){
+      alert("Put you custom toolbar event in here.");
+      return false;
+    });
+    toolbar.append(link);
+    
+    // Custom Insert Image icon event
+    function changeInsertImageIconWithCustomEvent() {
+      var link = toolbar.find("a.qe-image");
+      link.attr("data-action","");
+      link.click(function(e){
+        alert("New insert image event");
+        return false;
+      });
+      alert("Image icon event has changed, you can click it to test");
+      return false;
+    }
+    
+    $("#submit").click(function(){
+      alert("确认发布文章？");
+    });
+    </script>
+  </div>
+</div>
+
